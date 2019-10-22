@@ -1,0 +1,24 @@
+<mat-nav-list>
+  <a *ngIf="!isAuth" mat-list-item routerLink="/signup" (click)="onClose()">
+    <mat-icon>face</mat-icon>
+    <span class="nav-caption">Sign Up</span>
+  </a>
+  <a *ngIf="!isAuth" mat-list-item routerLink="/login" (click)="onClose()">
+    <mat-icon>input</mat-icon>
+    <span class="nav-caption">Login</span>
+  </a>
+  <a *ngIf="isAuth" mat-list-item routerLink="/calendar" (click)="onClose()">
+    <mat-icon>calendar_todayr</mat-icon>
+    <span class="nav-caption">Calendar</span>
+  </a>
+  <a *ngIf="isAuth" mat-list-item routerLink="/profile" (click)="onClose()">
+    <mat-icon>supervised_user_circle</mat-icon>
+    <span class="nav-caption">Profile</span>
+  </a>
+  <mat-list-item *ngIf="isAuth" (click)="onLogout()">
+    <button mat-icon-button>
+      <mat-icon>eject</mat-icon>
+      <span class="nav-caption">Logout</span>
+    </button>
+  </mat-list-item>
+</mat-nav-list>
