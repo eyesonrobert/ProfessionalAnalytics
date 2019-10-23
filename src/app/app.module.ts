@@ -17,7 +17,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AuthService } from './auth/auth.service';
 import { environment } from '../environments/environment';
 import { UIService } from './shared/ui.service';
-import { ProfileComponent } from './profile/profile/profile.component';
+import { ProfileModule } from './profile/profile.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,6 @@ import { ProfileComponent } from './profile/profile/profile.component';
     HeaderComponent,
     SidenavListComponent,
     CalendarComponent,
-    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +37,7 @@ import { ProfileComponent } from './profile/profile/profile.component';
     AngularFireModule.initializeApp(environment.firebase),
     SharedModule,
     AuthModule,
+    ProfileModule
   ],
   providers: [AuthService, UIService],
   bootstrap: [AppComponent],

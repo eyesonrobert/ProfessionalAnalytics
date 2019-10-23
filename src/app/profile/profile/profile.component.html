@@ -1,5 +1,102 @@
-<div>
-  <img src="../../../assets/images/default_profile.png" alt="profile" height="200px" width="auto">
-</div>
+<!-- <mat-card>
+  <mat-card-title>
+    Hello {{ email }}, Your profile is being created!
+  </mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="profileForm" (ngSubmit)="onFormSubmit(profileForm.value)">
+      <table>
+        <tr>
+          <td>
+            <mat-form-field class="profile-full-width">
+              <input formControlName="FirstName" matInput placeholder="First Name">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="profile-full-width">
+              <input formControlName="LastName" matInput placeholder="Last Name">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <mat-form-field class="profile-full-width">
+              <textarea formControlName="BusinessName" matInput placeholder="Business Name" matTextareaAutosize
+                matAutosizeMinRows="2" matAutosizeMaxRows="5"></textarea>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <mat-form-field class="profile-full-width">
+              <input formControlName="DOB" matInput [matDatepicker]="picker" placeholder="Date of birth">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker touchUi="true" #picker></mat-datepicker>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td><br>
+            <mat-form-field>
+              <mat-select formControlName="Role" placeholder="Select Role" [(value)]="selected">
+                <mat-option>-- Select Any --</mat-option>
+                <mat-option value="Owner">Owner</mat-option>
+                <mat-option value="Contractor">Contractor</mat-option>
+                <mat-option value="Customer">Customer</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="content-center">
+            <button mat-raised-button color="primary">Submit</button>
+            <button mat-raised-button color="primary">Clear</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </mat-card-content>
+</mat-card> -->
 
-<p fxLayout="column" fxLayoutAlign="center center" style="font-size: 200%">Profile Page in Progress!</p>
+<form class="create-form" [formGroup]="exampleForm" novalidate (ngSubmit)="onSubmit(exampleForm.value)">
+
+  <div class="form-group">
+    <mat-form-field class="input-style">
+      <input matInput placeholder="Name" class="form-control" formControlName="name">
+    </mat-form-field>
+    <ng-container *ngFor="let validation of validation_messages.name">
+      <mat-error
+        *ngIf="exampleForm.get('name').hasError(validation.type) && (exampleForm.get('name').dirty || exampleForm.get('name').touched)">
+        {{validation}}</mat-error>
+    </ng-container>
+  </div>
+
+  <div class="form-group">
+    <mat-form-field class="input-style">
+      <input matInput placeholder="Surname" class="form-control" formControlName="surname">
+    </mat-form-field>
+    <ng-container *ngFor="let validation of validation_messages.surname">
+      <mat-error
+        *ngIf="exampleForm.get('surname').hasError(validation.type) && (exampleForm.get('surname').dirty || exampleForm.get('surname').touched)">
+        {{validation}}</mat-error>
+    </ng-container>
+  </div>
+
+  <div class="form-group">
+    <mat-form-field class="input-style">
+      <input matInput type="number" min="0" max="100" placeholder="Age" class="form-control" formControlName="age">
+    </mat-form-field>
+    <ng-container *ngFor="let validation of validation_messages.age">
+      <mat-error
+        *ngIf="exampleForm.get('age').hasError(validation.type) && (exampleForm.get('age').dirty || exampleForm.get('age').touched)">
+        {{validation}}</mat-error>
+    </ng-container>
+  </div>
+
+  <div class="row submit-button-container">
+    <div class="col-md-4">
+      <button mat-raised-button class="submit-button" color="primary" type="submit"
+        [disabled]="!exampleForm.valid">Create</button>
+    </div>
+  </div>
+
+</form>

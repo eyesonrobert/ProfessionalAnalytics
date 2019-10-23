@@ -10,15 +10,8 @@ import { UIService } from '../../shared/ui.service';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit, OnDestroy {
-  maxDate;
   isLoading = false;
   private loadingSubs: Subscription;
-
-  private roles: any[] = [
-    { value: 1, name: 'Owner' },
-    { value: 2, name: 'Contractor' },
-    { value: 3, name: 'Customer' }
-  ];
 
   constructor(private authService: AuthService, private uiService: UIService) { }
 
@@ -26,8 +19,6 @@ export class SignupComponent implements OnInit, OnDestroy {
     this.loadingSubs = this.uiService.loadingStateChanged.subscribe(isLoading => {
       this.isLoading = isLoading;
     });
-    this.maxDate = new Date();
-    this.maxDate.setFullYear(this.maxDate.getFullYear() - 18);
   }
 
   onSubmit(form: NgForm) {
